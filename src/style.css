@@ -73,3 +73,23 @@ body::before {
     opacity: 1;
   }
 }
+
+/* Timeline */
+.timeline-svg {
+  overflow: visible;
+}
+
+.timeline-line {
+  transition: stroke-dashoffset 0.1s linear;
+}
+
+.timeline-event {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.timeline-event.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

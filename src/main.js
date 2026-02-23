@@ -191,3 +191,38 @@ function updateBorders(time) {
 }
 
 requestAnimationFrame(updateBorders);
+
+// Timeline: scroll-driven line draw + event reveal
+const timelineSection = document.getElementById("timeline-section");
+const timelineLine = document.querySelector(".timeline-line");
+const timelineEvents = document.querySelectorAll(".timeline-event");
+
+if (timelineSection && timelineLine) {
+  const lineLength = timelineSection.scrollHeight;
+  timelineLine.setAttribute("stroke-dasharray", "6 4");
+  timelineLine.setAttribute("stroke-dashoffset", lineLength);
+
+  window.addEventListener("scroll", () => {
+    const rect = timelineSection.getBoundingClientRect();
+    const sectionTop = rect.top + window.scrollY;
+    const sectionHeight = rect.height;
+    const scrolled = window.scrollY + window.innerHeight - sectionTop;
+    const progress = Math.max(0, Math.min(1, scrolled / sectionHeight));
+
+    const offset = lineLength * (1 - progress);
+    timelineLine.setAttribute("stroke-dashoffset", offset);
+  });
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  timelineEvents.forEach((el) => observer.observe(el));
+}
