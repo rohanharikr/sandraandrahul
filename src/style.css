@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import url("https://vetrivelcsamy.github.io/cheltenham-classic/cheltenhamclassic.css");
 
-body {
+/* body {
   background-image: url("/paper.png");
   background-size: cover;
   background-position: center;
@@ -14,7 +14,7 @@ body::before {
   inset: 0;
   background: rgba(255, 255, 255, 0.75);
   z-index: -1;
-}
+} */
 
 .svg-border {
   width: 300vw;
