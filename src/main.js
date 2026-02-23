@@ -166,12 +166,24 @@ function init() {
 
 init();
 
-// Scroll-driven SVG border animation
+// Scroll-driven SVG border animation with easing
 const borderTop = document.querySelector(".svg-border-top");
 const borderBottom = document.querySelector(".svg-border-bottom");
 
-window.addEventListener("scroll", () => {
-  const scrollY = window.scrollY;
-  borderTop.style.transform = `translateX(${scrollY * 0.5}px)`;
-  borderBottom.style.transform = `scaleY(-1) translateX(${-scrollY * 0.5}px)`;
-});
+let currentTop = 0;
+let currentBottom = 0;
+
+function updateBorders() {
+  const targetTop = window.scrollY * 0.5;
+  const targetBottom = -window.scrollY * 0.5;
+
+  currentTop += (targetTop - currentTop) * 0.08;
+  currentBottom += (targetBottom - currentBottom) * 0.08;
+
+  borderTop.style.transform = `translateX(${currentTop}px)`;
+  borderBottom.style.transform = `scaleY(-1) translateX(${currentBottom}px)`;
+
+  requestAnimationFrame(updateBorders);
+}
+
+requestAnimationFrame(updateBorders);
