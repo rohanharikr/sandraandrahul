@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import url("https://vetrivelcsamy.github.io/cheltenham-classic/cheltenhamclassic.css");
 
+body {
+  font-family: "Cheltenham Classic", serif;
+}
+
 /* body {
   background-image: url("/paper.png");
   background-size: cover;
