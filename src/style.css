@@ -59,6 +59,10 @@ body::before {
   animation-delay: 1s;
 }
 
+.verse-text {
+  font-family: "Cheltenham Classic", serif;
+}
+
 @keyframes fade-in {
   to {
     opacity: 1;
