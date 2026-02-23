@@ -165,3 +165,13 @@ function init() {
 }
 
 init();
+
+// Scroll-driven SVG border animation
+const borderTop = document.querySelector(".svg-border-top");
+const borderBottom = document.querySelector(".svg-border-bottom");
+
+window.addEventListener("scroll", () => {
+  const scrollY = window.scrollY;
+  borderTop.style.transform = `translateX(${scrollY * 0.5}px)`;
+  borderBottom.style.transform = `scaleY(-1) translateX(${-scrollY * 0.5}px)`;
+});
