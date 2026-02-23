@@ -166,16 +166,20 @@ function init() {
 
 init();
 
-// Scroll-driven SVG border animation with easing
+// SVG border animation: slow auto-drift + scroll boost
 const borderTop = document.querySelector(".svg-border-top");
 const borderBottom = document.querySelector(".svg-border-bottom");
 
 let currentTop = 0;
 let currentBottom = 0;
+const autoSpeed = 0.15; // px per frame base drift
 
-function updateBorders() {
-  const targetTop = window.scrollY * 0.375;
-  const targetBottom = -window.scrollY * 0.375;
+function updateBorders(time) {
+  const autoDrift = time * autoSpeed * 0.06;
+  const scrollBoost = window.scrollY * 0.375;
+
+  const targetTop = autoDrift + scrollBoost;
+  const targetBottom = -(autoDrift + scrollBoost);
 
   currentTop += (targetTop - currentTop) * 0.08;
   currentBottom += (targetBottom - currentBottom) * 0.08;
