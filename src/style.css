@@ -3,6 +3,7 @@
 
 body {
   font-family: "Cheltenham Classic", serif;
+  overflow-x: hidden;
 }
 
 /* body {
