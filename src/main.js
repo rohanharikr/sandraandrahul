@@ -206,8 +206,10 @@ if (timelineSection && timelineLine) {
     const rect = timelineSection.getBoundingClientRect();
     const sectionTop = rect.top + window.scrollY;
     const sectionHeight = rect.height;
-    const scrolled = window.scrollY + window.innerHeight - sectionTop;
-    const progress = Math.max(0, Math.min(1, scrolled / sectionHeight));
+    // Delay drawing until scrolled further into the section
+    const lateStart = window.innerHeight * 0.6;
+    const scrolled = window.scrollY + window.innerHeight - sectionTop - lateStart;
+    const progress = Math.max(0, Math.min(1, scrolled / (sectionHeight - lateStart)));
 
     const offset = lineLength * (1 - progress);
     timelineLine.setAttribute("stroke-dashoffset", offset);
@@ -221,7 +223,7 @@ if (timelineSection && timelineLine) {
         }
       });
     },
-    { threshold: 0.3 }
+    { threshold: 0.5 }
   );
 
   timelineEvents.forEach((el) => observer.observe(el));
