@@ -174,8 +174,8 @@ let currentTop = 0;
 let currentBottom = 0;
 
 function updateBorders() {
-  const targetTop = window.scrollY * 0.5;
-  const targetBottom = -window.scrollY * 0.5;
+  const targetTop = window.scrollY * 0.375;
+  const targetBottom = -window.scrollY * 0.375;
 
   currentTop += (targetTop - currentTop) * 0.08;
   currentBottom += (targetBottom - currentBottom) * 0.08;
