@@ -1,0 +1,84 @@
+@import "tailwindcss";
+@import url("https://vetrivelcsamy.github.io/cheltenham-classic/cheltenhamclassic.css");
+
+body {
+  background-image: url("/paper.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.75);
+  z-index: -1;
+}
+
+.svg-border {
+  width: 300vw;
+  height: 20px;
+  left: -100vw;
+  background-image: url("data:image/svg+xml,%3Csvg width='12.3149' height='18' viewBox='0 0 12.3149 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='1.75977' width='1.7592' height='17.592' fill='%23F7CE76'/%3E%3Crect x='5.27832' width='1.7592' height='17.592' fill='%23F7CE76'/%3E%3Crect x='8.79688' width='1.7592' height='17.592' fill='%23F7CE76'/%3E%3Crect width='1.7592' height='17.592' fill='%23BE8E2D'/%3E%3Crect x='3.51855' width='1.7592' height='17.592' fill='%23BE8E2D'/%3E%3Crect x='7.03711' width='1.7592' height='17.592' fill='%23BE8E2D'/%3E%3Crect x='10.5557' width='1.7592' height='17.592' fill='%23BE8E2D'/%3E%3Cpath d='M0 7.8252H12.3144V5.2774H0V7.8252Z' fill='%23B14328'/%3E%3Cpath d='M1.23242 9.52393H11.0839V6.97613H1.23242V9.52393Z' fill='%23B14328'/%3E%3Cpath d='M2.46387 11.647H9.8525V9.09918H2.46387V11.647Z' fill='%23B14328'/%3E%3Cpath d='M3.69434 13.3455H8.62009V10.7977H3.69434V13.3455Z' fill='%23B14328'/%3E%3Cpath d='M4.31055 15.469H8.00486V12.9212H4.31055V15.469Z' fill='%23B14328'/%3E%3Cpath d='M5.54297 17.592H6.77441V15.0442H5.54297V17.592Z' fill='%23B14328'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: auto 20px;
+}
+
+.svg-border-top {
+  position: fixed;
+  top: 0;
+  z-index: 50;
+  animation: marquee-right 200s linear infinite;
+}
+
+.svg-border-bottom {
+  position: fixed;
+  bottom: 0;
+  z-index: 50;
+  animation: marquee-left 200s linear infinite;
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(1231.49px);
+  }
+}
+
+.date-text {
+  font-family: "Cheltenham Classic", serif;
+  opacity: 0;
+  animation: fade-in 1s ease-out 0s forwards;
+}
+
+.name-text {
+  font-family: "Cheltenham Classic", serif;
+  opacity: 0;
+  animation: fade-in 1s ease-out forwards;
+}
+
+.name-left {
+  animation-delay: 0.5s;
+}
+
+.name-right {
+  animation-delay: 1s;
+}
+
+@keyframes fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes marquee-left {
+  from {
+    transform: scaleY(-1) translateX(0);
+  }
+  to {
+    transform: scaleY(-1) translateX(-1231.49px);
+  }
+}
